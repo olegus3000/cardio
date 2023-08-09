@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class Homepage extends AbstractController
+class SettingsController extends AbstractController
 {
-    #[Route('/', name: 'homepage')]
-    public function home(): Response
+    #[Route('/settings', name: 'app_settings')]
+    public function settings(): Response
     {
          if (empty($this->getUser())) {
              return $this->redirectToRoute('app_login');
          }
 
-        return $this->render('homepage/homepage.html.twig', ['registerUrl' => 'http://card.io/register', 'error' => 'error']);
+        return $this->render('settings/settings.html.twig');
     }
 }
