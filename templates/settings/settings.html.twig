@@ -7,4 +7,16 @@
     <h1>Settings</h1>
 
     <a href="{{ path('homepage') }}">Homepage</a>
+
+    {{ form_start(form) }}
+    {{ form_row(form.cardOrder) }}
+
+    <h3>Cards</h3>
+    {% for card in form.cards %}
+        <ul class="tags" style="display: flex">
+            <li style="display: block">{{ form_row(card.sideA) }}</li>
+            <li style="display: block">{{ form_row(card.sideB) }}</li>
+        </ul>
+    {% endfor %}
+    {{ form_end(form) }}
 {% endblock %}
