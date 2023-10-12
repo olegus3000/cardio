@@ -17,6 +17,7 @@ class SettingsType extends AbstractType
         $builder->add('cards', CollectionType::class, [
             'entry_type' => CardType::class,
             'entry_options' => ['label' => false],
+            'allow_add' => true,
         ]);
     }
 
