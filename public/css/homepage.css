@@ -1,0 +1,19 @@
+.card {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.sideA {
+    background-color: darkseagreen;
+}
+
+.sideB {
+    background-color: cornflowerblue;
+}
+
+.hide {
+    display: none;
+}

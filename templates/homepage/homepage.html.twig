@@ -4,6 +4,10 @@
 
 {% block body %}
 
+    <!-- TODO: move to head -->
+    <link href="{{ asset('css/homepage.css') }}" rel="stylesheet"/>
+    <script type="text/javascript" src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+
     <h1>Homepage</h1>
 
     <a href="{{ path('app_settings') }}">Settings</a>
@@ -11,4 +15,22 @@
     <a href="{{ path('app_list') }}">Card List</a>
 
     <a href="{{ path('app_logout') }}">Logout</a>
+
+    <br/>
+
+    <div class="card">
+        <div class="sideA">
+            {{card.sideA}}
+        </div>
+        <div class="sideB hide">
+            {{card.sideB}}
+        </div>
+    </div>
+
+<script type="application/javascript">
+    $('.card').click(function() {
+        alert('hohoho');
+    });
+</script>
+
 {% endblock %}
