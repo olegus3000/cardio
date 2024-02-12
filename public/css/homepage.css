@@ -1,9 +1,7 @@
 .card {
     width: 100px;
     height: 100px;
-    text-align: center;
-    vertical-align: middle;
-    display: table-cell;
+    display: flex;
 }
 
 .sideA {

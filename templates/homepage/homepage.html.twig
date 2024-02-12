@@ -28,8 +28,13 @@
     </div>
 
 <script type="application/javascript">
-    $('.card').click(function() {
-        alert('hohoho');
+    $('.sideA').click(function() {
+        $('.sideA').addClass('hide');
+        $('.sideB').removeClass('hide');
+    });
+    $('.sideB').click(function() {
+        $('.sideA').removeClass('hide');
+        $('.sideB').addClass('hide');
     });
 </script>
 
