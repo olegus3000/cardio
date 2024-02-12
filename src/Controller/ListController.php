@@ -3,17 +3,17 @@
 namespace App\Controller;
 
 use App\Entity\Settings;
-use App\Form\SettingsType;
+use App\Form\ListType;
 use App\Repository\CardRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class SettingsController extends AbstractController
+class ListController extends AbstractController
 {
-    #[Route('/settings', name: 'app_settings')]
-    public function settings(Request $request, CardRepository $cardRepository): Response
+    #[Route('/list', name: 'app_list')]
+    public function list(Request $request, CardRepository $cardRepository): Response
     {
         if (empty($this->getUser())) {
             return $this->redirectToRoute('app_login');
@@ -21,7 +21,13 @@ class SettingsController extends AbstractController
 
         $settings = new Settings();
 
-        $form = $this->createForm(SettingsType::class, $settings);
+        $cards = $cardRepository->findAll();
+
+        foreach ($cards as $card) {
+            $settings->getCards()->add($card);
+        }
+
+        $form = $this->createForm(ListType::class, $settings);
 
         $form->handleRequest($request);
 
@@ -29,8 +35,9 @@ class SettingsController extends AbstractController
             // ... do your form processing, like saving the Task and Tag entities
         }
 
-        return $this->render('settings/settings.html.twig', [
+        return $this->render('list/list.html.twig', [
             'form' => $form,
         ]);
+
     }
 }
